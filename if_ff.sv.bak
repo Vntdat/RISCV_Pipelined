@@ -1,0 +1,23 @@
+module if_ff (
+		input logic i_clk, i_enable_IF, i_rst_IF,
+		input logic [31:0] instr,
+		input logic [31:0] pc,
+		input logic [31:0] pc_four,
+		
+		output logic [31:0] instr_ID,
+		output logic [31:0] pc_ID,
+		output logic [31:0] pc_four_ID
+);
+	always_ff @(posedge i_clk) begin
+		if (!i_rst_IF) begin
+			instr_ID 	<= 32'h0000_0013;
+			pc_ID 		<= 32'h0;
+			pc_four_ID	<= 32'h0;
+			end
+		else if (i_enable_IF) begin
+			instr_ID 	<= instr;
+			pc_ID 		<= pc;
+			pc_four_ID	<= pc_four;
+			end
+		end
+endmodule
