@@ -1,7 +1,7 @@
 `define RESETPERIOD 55
 //`define FINISH      100005
 `define FINISH      10_000_000
-
+`include "tlib.svh"
 module tbench;
 
 // Clock and reset generator
