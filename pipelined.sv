@@ -19,22 +19,30 @@ module pipelined (
     // Debugging signal
     output logic [31:0] o_pc_debug
 );
-
-    /*/ Wire declarations
-    logic pc_sel, pc_sel_wb, pc_sel_ex, pc_sel_mem;
-	 logic br_equal, br_less, br_un, br_un_ex;
-	 logic opa_sel, opb_sel, opa_sel_ex, opb_sel_ex;
-	 logic [3:0] alu_op, alu_op_ex;
-	 logic  mem_wren, mem_wren_ex,mem_wren_mem;
-	 logic wb_sel, wb_sel_ex, wb_sel_mem;
-	 logic [31:0] alu_data_mem, alu_data; 
-	 logic [31:0] pc_next;
-	 logic [31:0] pc, pc_id, pc_ex, pc_mem;
-	 logic [31:0] pc_four, pc_four_id, pc_four_ex,pc_four_mem;
-	 logic [31:0] instr, instr_id,instr_ex, instr_wb, instr_mem;
-	 logic [3:0] lsu_op, lsu_op_ex, lsu_op_mem;
-	 */
-	
+	logic i_reset_if, i_reset_id, i_reset_ex, i_reset_mem;
+	logic i_enable_if, i_enable_id, i_enable_ex, i_enable_mem;
+	//IF
+   logic pc_sel_wb;
+	logic [31:0] alu_data_mem, pc_four, pc, instr;
+	//ID
+   logic pc_sel, rd_wren, inst_vld, br_un, opa_sel, opb_sel, mem_wren;
+	logic [31:0] instr_id, pc_id, pc_four_id, rs1_data, rs2_data, immgen;
+	logic [3:0] alu_op, lsu_op; 
+	logic [1:0] wb_sel;
+	//EX
+	logic pc_sel_ex, rd_wren_ex, inst_vld_ex, mem_wren_ex, br_un_ex,br_equal, br_less, opa_sel_ex, opb_sel_ex;
+	logic [31:0] alu_data, rs1_data_ex, rs2_data_ex, immgen_ex, pc_ex, pc_four_ex, instr_ex;
+	logic [3:0] alu_op_ex, lsu_op_ex;
+	logic [1:0] wb_sel_ex;
+	//MEM
+	logic pc_sel_mem, rd_wren_mem, inst_vld_mem, mem_wren_mem;
+	logic [31:0] rs2_data_mem, immgen_mem , pc_mem, pc_four_mem, instr_mem, ld_data;
+	logic [3:0] lsu_op_mem;
+	logic [1:0] wb_sel_mem;
+	//WB
+	logic rd_wren_wb, inst_vld_wb;
+	logic [31:0] pc_four_wb, alu_data_wb, ld_data_wb, immgen_wb, wb_data, pc_wb, instr_wb;
+	logic [1:0] wb_sel_wb;
 //////////////////////////////////////////////////////////////////////
 	//STAGE IF
 //////////////////////////////////////////////////////////////////////	
