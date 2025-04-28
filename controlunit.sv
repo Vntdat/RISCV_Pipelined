@@ -4,7 +4,7 @@ module controlunit (
 		input logic br_less, br_equal,
 		
 		//tin hieu ngo ra
-		output logic pc_sel, rd_wren, br_un, opa_sel, opb_sel, mem_wren,
+		output logic pc_sel, rd_wren, br_un, opa_sel, opb_sel, mem_wren, inst_vld,
 		output logic [3:0] alu_op,
 		output logic [1:0] wb_sel,
 		output logic [3:0] lsu_op
@@ -32,7 +32,7 @@ module controlunit (
 				alu_op    = 4'b0000; // add
 				wb_sel    = 2'b00;   // alu_data
 				lsu_op = 4'b0100;		//lW
-				
+				inst_vld = 1'b1;
 		// dua tren opcode de phan biec cac loai lenh R, I, S, B, U, J
 		
 		case (opcode)
@@ -43,7 +43,7 @@ module controlunit (
 					opa_sel = 1'b0;
 					opb_sel = 1'b0; //rs2
 					wb_sel  = 2'b00; //alu_data
-			
+					inst_vld = 1'b0;
 								case  (fun3)
 										3'b000: begin
 															case  (fun7)
@@ -72,7 +72,7 @@ module controlunit (
 					opa_sel = 1'b0;
 					opb_sel = 1'b1; //imm
 					wb_sel  = 2'b00; //alu_data
-				
+					inst_vld = 1'b0;
 									case (fun3)
 											3'b000: alu_op = 4'b0000; // lenh ADDI
 											3'b001: alu_op = 4'b0111; // lenh SLLI
@@ -95,7 +95,7 @@ module controlunit (
     opb_sel   = 1'b1; // imm
     rd_wren   = 1'b0;
     mem_wren  = 1'b0;
-
+	 inst_vld = 1'b0;
     // Xác định br_un phụ thuộc vào fun3
     case (br_unte)
         1'b0: br_un = 1'b1;
@@ -122,7 +122,7 @@ end
 					opb_sel  = 1'b1; //imm
 					mem_wren = 1'b1;
 					wb_sel   = 2'b01; //lsu
-		
+					inst_vld = 1'b0;
 					case (fun3)
 							3'b000: lsu_op = 4'b1000; //SB
 							3'b001: lsu_op = 4'b1001; //SH
@@ -139,7 +139,7 @@ end
 					opb_sel  = 1'b1; //imm
 					mem_wren = 1'b0;
 					wb_sel   = 2'b01; //lsu	
-			
+					inst_vld = 1'b0;
 					case (fun3)
 							3'b000: lsu_op = 4'b0000; //LB
 							3'b001: lsu_op = 4'b0010; //LH
@@ -158,7 +158,7 @@ end
 					opb_sel  = 1'b1; //imm
 					mem_wren = 1'b0;
 					wb_sel   = 2'b10; //pc+4
-			
+					inst_vld = 1'b0;
 							 end
 				5'b11001: begin 	//lenh JALR
 					pc_sel   = 1'b1;
@@ -167,7 +167,7 @@ end
 					opb_sel  = 1'b1; //imm
 					mem_wren = 1'b0;
 					wb_sel   = 2'b10; //pc+4
-				
+					inst_vld = 1'b0;
 							end
 				//I_Format 
 				//lenh LUI
@@ -177,7 +177,7 @@ end
 					mem_wren = 1'b0;
 					opb_sel  = 1'b1;
 					wb_sel   = 2'b11;  // sửa ở trong hình anh Hải cho thêm phần nối từ immgen đến mux 4 sang 1
-					
+					inst_vld = 1'b0;
 						end
 				//lenh AUIPC
 				5'b00101: begin
@@ -187,7 +187,7 @@ end
 					opb_sel  = 1'b1; //imm
 					mem_wren = 1'b0;
 					wb_sel   = 2'b00; //alu_data
-
+					inst_vld = 1'b0;
 						end
 				default: begin
 				end

@@ -1,5 +1,5 @@
 module ex_ff (
-		input logic i_clk, i_rst_ex, i_enable_ex,
+		input logic i_clk, i_reset_ex, i_enable_ex,
 		input logic pc_sel_ex, rd_wren_ex, inst_vld_ex, mem_wren_ex,
 		input logic [1:0] wb_sel_ex,
 		input logic [31:0] alu_data,
@@ -21,7 +21,7 @@ module ex_ff (
 		output logic [3:0] lsu_op_mem
 );
 		always_ff @(posedge i_clk) begin
-			if (!i_rst_ex) begin
+			if (!i_reset_ex) begin
 				pc_sel_mem		<= 1'b0;
 				rd_wren_mem 	<= 1'b0;
 				inst_vld_mem 	<= 1'b0;

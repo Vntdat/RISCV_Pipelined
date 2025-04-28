@@ -46,6 +46,15 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE stagewb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stagemem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageif.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageid.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageex.sv
+set_global_assignment -name SYSTEMVERILOG_FILE tbench.sv
+set_global_assignment -name SYSTEMVERILOG_FILE scoreboard.sv
+set_global_assignment -name SYSTEMVERILOG_FILE immgenn.sv
+set_global_assignment -name SYSTEMVERILOG_FILE driver.sv
 set_global_assignment -name SYSTEMVERILOG_FILE xor_32.sv
 set_global_assignment -name SYSTEMVERILOG_FILE sub_32.sv
 set_global_assignment -name SYSTEMVERILOG_FILE srl_32.sv
@@ -79,4 +88,5 @@ set_global_assignment -name SYSTEMVERILOG_FILE brc_comparator_signed.sv
 set_global_assignment -name SYSTEMVERILOG_FILE brc.sv
 set_global_assignment -name SYSTEMVERILOG_FILE and_32.sv
 set_global_assignment -name SYSTEMVERILOG_FILE alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageff.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

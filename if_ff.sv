@@ -1,5 +1,5 @@
 module if_ff (
-		input logic i_clk, i_enable_if, i_rst_if,
+		input logic i_clk, i_enable_if, i_reset_if,
 		input logic [31:0] instr,
 		input logic [31:0] pc,
 		input logic [31:0] pc_four,
@@ -9,7 +9,7 @@ module if_ff (
 		output logic [31:0] pc_four_id
 );
 	always_ff @(posedge i_clk) begin
-		if (!i_rst_if) begin
+		if (!i_reset_if) begin
 			instr_id 	<= 32'h0000_0013;
 			pc_id 		<= 32'h0;
 			pc_four_id	<= 32'h0;

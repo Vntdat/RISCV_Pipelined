@@ -1,5 +1,5 @@
 module mem_ff (
-		input logic i_clk, i_rst_mem, i_enable_mem,
+		input logic i_clk, i_reset_mem, i_enable_mem,
 		input logic pc_sel_mem, rd_wren_mem, inst_vld_mem,
 		input logic [1:0] wb_sel_mem,
 		input logic [31:0] ld_data,
@@ -43,7 +43,7 @@ module mem_ff (
 		output logic [31:0] i_io_sw_wb
 );
 		always_ff @(posedge i_clk) begin
-			if (!i_rst_mem) begin
+			if (!i_reset_mem) begin
 				pc_sel_wb 		<= 1'b0;
 				rd_wren_wb 		<= 1'b0;
 				inst_vld_wb		<= 1'b0;

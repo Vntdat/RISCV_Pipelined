@@ -1,5 +1,5 @@
 module id_ff (
-		input logic i_clk, i_rst_id, i_enable_id,
+		input logic i_clk, i_reset_id, i_enable_id,
 		input logic pc_sel, rd_wren, inst_vld, br_un, opa_sel, opb_sel, mem_wren,
 		input logic [3:0] alu_op,
 		input logic [1:0] wb_sel,
@@ -23,7 +23,7 @@ module id_ff (
 		output logic [3:0] lsu_op_ex
 );
 		always_ff @(posedge i_clk) begin
-			if (!i_rst_id) begin
+			if (!i_reset_id) begin
 				pc_sel_ex		<= 1'b0;
 				rd_wren_ex 		<= 1'b0;
 				inst_vld_ex 	<= 1'b0;
