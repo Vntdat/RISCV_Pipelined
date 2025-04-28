@@ -55,7 +55,7 @@ module scoreboard(
         $display("IPC          = N/A");
 
       if (num_ctrl != 0)
-        $display("Mispred Rate = %2.2f %", num_mispred/num_ctrl*100);
+			$display("Mispred Rate = %2.2f %%", num_mispred/num_ctrl*100);
       else
         $display("Mispred Rate = N/A");
 

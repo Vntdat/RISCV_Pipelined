@@ -36,13 +36,6 @@ Top level modules:
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/constant.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/constant.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageif.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageif.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module stageif
-
-Top level modules:
-	stageif
-
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/dmem.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/dmem.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module dmem
@@ -57,26 +50,20 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	scoreboard
 
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/tbench.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/tbench.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling package tbench_sv_unit
+-- Compiling module tbench
+
+Top level modules:
+	tbench
+
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/lsu.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/lsu.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module lsu
 
 Top level modules:
 	lsu
-
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sll_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sll_32.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module sll_32
-
-Top level modules:
-	sll_32
-
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module mux2_1_32bit
-
-Top level modules:
-	mux2_1_32bit
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit_unsigned.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit_unsigned.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -92,19 +79,26 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	brc
 
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module mux2_1_32bit
+
+Top level modules:
+	mux2_1_32bit
+
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sll_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sll_32.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module sll_32
+
+Top level modules:
+	sll_32
+
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/imem.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/imem.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module imem
 
 Top level modules:
 	imem
-
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux16_1.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux16_1.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module mux16_1
-
-Top level modules:
-	mux16_1
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux4_1_32bit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux4_1_32bit.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -113,12 +107,12 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	mux4_1_32bit
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mem_ff.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mem_ff.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux16_1.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux16_1.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module mem_ff
+-- Compiling module mux16_1
 
 Top level modules:
-	mem_ff
+	mux16_1
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/alu.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/alu.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -127,18 +121,19 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	alu
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/tlib.svh} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/tlib.svh}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mem_ff.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mem_ff.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module mem_ff
 
 Top level modules:
-	--none--
+	mem_ff
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagemem.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagemem.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module stagemem
+-- Compiling module comparator_32bit
 
 Top level modules:
-	stagemem
+	comparator_32bit
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/immgenn.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/immgenn.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -147,12 +142,18 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	immgenn
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagemem.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagemem.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module comparator_32bit
+-- Compiling module stagemem
 
 Top level modules:
-	comparator_32bit
+	stagemem
+
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/tlib.svh} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/tlib.svh}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+
+Top level modules:
+	--none--
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/driver.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/driver.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -168,19 +169,12 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	mux2_1
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/xor_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/xor_32.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/or_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/or_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module xor_32
+-- Compiling module or_32
 
 Top level modules:
-	xor_32
-
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagewb.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagewb.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module stagewb
-
-Top level modules:
-	stagewb
+	or_32
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/srl_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/srl_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -189,19 +183,19 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	srl_32
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/or_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/or_32.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagewb.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stagewb.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module or_32
+-- Compiling module stagewb
 
 Top level modules:
-	or_32
+	stagewb
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sub_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sub_32.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/xor_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/xor_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module sub_32
+-- Compiling module xor_32
 
 Top level modules:
-	sub_32
+	xor_32
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/regfile.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/regfile.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -210,19 +204,12 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	regfile
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/fulladder_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/fulladder_32.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sub_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sub_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module fulladder_32
+-- Compiling module sub_32
 
 Top level modules:
-	fulladder_32
-
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/and_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/and_32.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module and_32
-
-Top level modules:
-	and_32
+	sub_32
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/brc_comparator_signed.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/brc_comparator_signed.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -231,19 +218,19 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	brc_comparator_signed
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/pc_reg.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/pc_reg.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/and_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/and_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module pc_reg
+-- Compiling module and_32
 
 Top level modules:
-	pc_reg
+	and_32
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/id_ff.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/id_ff.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/fulladder_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/fulladder_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module id_ff
+-- Compiling module fulladder_32
 
 Top level modules:
-	id_ff
+	fulladder_32
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/ex_ff.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/ex_ff.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -252,12 +239,19 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	ex_ff
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageid.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageid.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/id_ff.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/id_ff.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module stageid
+-- Compiling module id_ff
 
 Top level modules:
-	stageid
+	id_ff
+
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/pc_reg.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/pc_reg.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module pc_reg
+
+Top level modules:
+	pc_reg
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageex.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageex.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -266,6 +260,13 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	stageex
 
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/controlunit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/controlunit.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module controlunit
+
+Top level modules:
+	controlunit
+
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/memory.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/memory.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module memory
@@ -273,11 +274,11 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	memory
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/controlunit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/controlunit.sv}
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageid.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageid.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module controlunit
+-- Compiling module stageid
 
 Top level modules:
-	controlunit
+	stageid
 
 } {} {}}

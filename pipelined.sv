@@ -43,13 +43,16 @@ module pipelined (
 	logic rd_wren_wb, inst_vld_wb;
 	logic [31:0] pc_four_wb, alu_data_wb, ld_data_wb, immgen_wb, wb_data, pc_wb, instr_wb;
 	logic [1:0] wb_sel_wb;
+	//IO
+	logic [31:0] o_io_lcd_mem, o_io_ledg_mem, o_io_ledr_mem, i_io_sw_wb;
+	logic [6:0] o_io_hex0_mem, o_io_hex1_mem, o_io_hex2_mem, o_io_hex3_mem, o_io_hex4_mem, o_io_hex5_mem, o_io_hex6_mem, o_io_hex7_mem; 
 //////////////////////////////////////////////////////////////////////
 	//STAGE IF
 //////////////////////////////////////////////////////////////////////	
 		stageif stageif(
 		.i_clk		(i_clk),
 		.i_reset		(i_reset),
-		.pc_sel_wb	(pc_sel_wb),
+		.pc_sel_ex	(pc_sel_ex),
 		.alu_data_mem	(alu_data_mem),
 		.instr 			(instr),
 		.pc				(pc),

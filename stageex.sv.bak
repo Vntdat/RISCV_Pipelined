@@ -6,7 +6,6 @@ module stageex (
 		output logic br_less, br_equal,
 		output logic [31:0] alu_data
 );
-		logic [31:0] operand_a, operand_b;
    // Branch comparison logic
     brc brc (
         .i_rs1_data      (rs1_data_ex),
