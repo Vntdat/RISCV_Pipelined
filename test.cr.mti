@@ -36,12 +36,26 @@ Top level modules:
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/constant.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/constant.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageif.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/stageif.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module stageif
+
+Top level modules:
+	stageif
+
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/dmem.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/dmem.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module dmem
 
 Top level modules:
 	dmem
+
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/lsu.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/lsu.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module lsu
+
+Top level modules:
+	lsu
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/scoreboard.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/scoreboard.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -58,13 +72,6 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	tbench
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/lsu.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/lsu.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module lsu
-
-Top level modules:
-	lsu
-
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit_unsigned.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/comparator_32bit_unsigned.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module comparator_32bit_unsigned
@@ -79,19 +86,19 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	brc
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module mux2_1_32bit
-
-Top level modules:
-	mux2_1_32bit
-
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sll_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sll_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module sll_32
 
 Top level modules:
 	sll_32
+
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/mux2_1_32bit.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module mux2_1_32bit
+
+Top level modules:
+	mux2_1_32bit
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/imem.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/imem.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
@@ -197,19 +204,19 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	xor_32
 
-} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/regfile.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/regfile.sv}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module regfile
-
-Top level modules:
-	regfile
-
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sub_32.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/sub_32.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module sub_32
 
 Top level modules:
 	sub_32
+
+} {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/regfile.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/regfile.sv}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module regfile
+
+Top level modules:
+	regfile
 
 } {} {}} {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/brc_comparator_signed.sv} {1 {vlog -work work -sv {E:/BKHCM/HK 242/CTMT/code/Mile3/peipelineds/brc_comparator_signed.sv}
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012

@@ -1,0 +1,45 @@
+module stageid(
+	input logic i_clk, i_reset,
+	input logic br_less, br_equal, rd_wren_wb,
+	input logic [31:0] instr_id, pc_id, pc_four_id, instr_wb, wb_data,
+	
+	output logic pc_sel, rd_wren, inst_vld, br_un, opa_sel, opb_sel, mem_wren,
+	output logic [3:0] alu_op, lsu_op,
+	output logic [1:0] wb_sel,
+	output logic [31:0] rs1_data, rs2_data, immgen
+);
+	
+    //regfile
+    regfile regfile (
+        .i_clk          (i_clk),
+        .i_reset        (i_reset),
+        .i_rs1_addr     (instr_id [19:15]),
+        .i_rs2_addr     (instr_id [24:20]),
+        .i_rd_addr      (instr_wb [11:7]),
+        .i_rd_data      (wb_data),
+        .i_rd_wren      (rd_wren_wb),
+        .o_rs1_data     (rs1_data),
+        .o_rs2_data     (rs2_data)
+);
+		//immgen
+	    immgenn immgenn (
+        .i_inst (instr_id),
+        .o_imm (immgen)
+);
+    // Control unit
+    controlunit controlunit (
+        .i_instr    (instr_id),
+        .br_less    (br_less),
+        .br_equal   (br_equal),
+        .pc_sel     (pc_sel),
+        .rd_wren    (rd_wren),
+		  .inst_vld		(inst_vld),
+        .br_un      (br_un),
+        .opa_sel    (opa_sel),
+        .opb_sel    (opb_sel),
+        .mem_wren   (mem_wren),
+        .alu_op     (alu_op),
+        .wb_sel     (wb_sel),
+		  .lsu_op      (lsu_op)
+    );
+endmodule
