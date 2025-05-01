@@ -1,0 +1,92 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+# Date created = 18:31:27  April 27, 2025
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		pipelined_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV GX"
+set_global_assignment -name DEVICE auto
+set_global_assignment -name TOP_LEVEL_ENTITY pipelined
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:31:27  APRIL 27, 2025"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE stagewb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stagemem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageif.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageid.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageex.sv
+set_global_assignment -name SYSTEMVERILOG_FILE tbench.sv
+set_global_assignment -name SYSTEMVERILOG_FILE scoreboard.sv
+set_global_assignment -name SYSTEMVERILOG_FILE immgenn.sv
+set_global_assignment -name SYSTEMVERILOG_FILE driver.sv
+set_global_assignment -name SYSTEMVERILOG_FILE xor_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE sub_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE srl_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE sra_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE sll_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
+set_global_assignment -name SYSTEMVERILOG_FILE pipelined.sv
+set_global_assignment -name SYSTEMVERILOG_FILE pc_reg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE or_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux4_1_32bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_32bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux16_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mem_ff.sv
+set_global_assignment -name SYSTEMVERILOG_FILE memory.sv
+set_global_assignment -name SYSTEMVERILOG_FILE lsu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE immgen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE imem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE if_ff.sv
+set_global_assignment -name SYSTEMVERILOG_FILE id_ff.sv
+set_global_assignment -name SYSTEMVERILOG_FILE full_adder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE fulladder_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ex_ff.sv
+set_global_assignment -name SYSTEMVERILOG_FILE dmem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE controlunit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE constant.sv
+set_global_assignment -name SYSTEMVERILOG_FILE comparator_32bit_unsigned.sv
+set_global_assignment -name SYSTEMVERILOG_FILE comparator_32bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE brc_comparator_unsigned.sv
+set_global_assignment -name SYSTEMVERILOG_FILE brc_comparator_signed.sv
+set_global_assignment -name SYSTEMVERILOG_FILE brc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE and_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE stageff.sv
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

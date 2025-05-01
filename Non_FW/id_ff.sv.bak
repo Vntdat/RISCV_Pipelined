@@ -1,0 +1,59 @@
+module id_ff (
+		input logic i_clk_id, i_rst_id, i_enable_id,
+		input logic pc_sel, rd_wren, inst_vld, br_un, opa_sel, opb_sel, mem_wren,
+		input logic [3:0] alu_op,
+		input logic [1:0] wb_sel,
+		input logic [31:0] rs1_data,
+		input logic [31:0] rs2_data,
+		input logic [31:0] immgen,
+		input logic [31:0] instr_ID,
+		input logic [31:0] pc_ID,
+		input logic [31:0] pc_four_ID,
+		
+		output logic pc_sel_EX, rd_wren_EX, inst_vld_EX, br_un_EX, opa_sel_EX, opb_sel_EX, mem_wren_EX,
+		output logic [3:0] alu_op_EX,
+		output logic [1:0] wb_sel_EX,
+		output logic [31:0] rs1_data_EX,
+		output logic [31:0] rs2_data_EX,
+		output logic [31:0] immgen_EX,
+		output logic [31:0] instr_EX,
+		output logic [31:0] pc_EX,
+		output logic [31:0] pc_four_EX
+);
+		always_ff @(posedge i_clk_id) begin
+			if (!i_rst_id) begin
+				pc_sel_EX		<= 1'b0;
+				rd_wren_EX 		<= 1'b0;
+				inst_vld_EX 	<= 1'b0;
+				br_un_EX			<= 1'b0;
+				opa_sel_EX 		<= 1'b0;
+				opb_sel_EX 		<= 1'b0;
+				mem_wren_EX		<= 1'b0;
+				alu_op_EX		<= 4'b0000;
+				wb_sel_EX		<= 2'b00;
+				rs1_data_EX		<= 32'h0;
+				rs2_data_EX		<= 32'h0;
+				immgen_EX		<= 32'h0;
+				instr_EX			<= 32'h0000_0013;
+				pc_EX				<= 32'h0;
+				pc_four_EX		<= 32'h0;
+			end
+		else if (i_enable_id) begin
+				pc_sel_EX		<= pc_sel;
+				rd_wren_EX 		<= rd_wren;
+				inst_vld_EX 	<= inst_vld;
+				br_un_EX			<= br_un;
+				opa_sel_EX 		<= opa_sel;
+				opb_sel_EX 		<= opb_sel;
+				mem_wren_EX		<= mem_wren;
+				alu_op_EX		<= alu_op;
+				wb_sel_EX		<= wb_sel;
+				rs1_data_EX		<= rs1_data;
+				rs2_data_EX		<= rs2_data;
+				immgen_EX		<= immgen;
+				instr_EX			<= instr_ID;
+				pc_EX				<= pc_ID;
+				pc_four_EX		<= pc_four_ID;
+			end
+		end
+endmodule

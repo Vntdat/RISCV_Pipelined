@@ -1,0 +1,47 @@
+module mem_ff (
+		input logic i_clk, i_rst_mem, i_enable_mem,
+		input logic pc_sel_mem, rd_wren_mem, inst_vld_mem,
+		input logic [1:0] wb_sel_mem,
+		input logic [31:0] ld_data,
+		input logic [31:0] alu_data_mem,
+		input logic [31:0] immgen_mem,
+		input logic [31:0] instr_mem,
+		input logic [31:0] pc_four_mem,
+		input logic [31:0] pc_mem,
+		
+		output logic pc_sel_wb, rd_wren_wb, inst_vld_wb,
+		output logic [1:0] wb_sel_wb,
+		output logic [31:0] ld_data_wb,
+		output logic [31:0] alu_data_wb,
+		output logic [31:0] immgen_wb,
+		output logic [31:0] instr_wb,
+		output logic [31:0] pc_four_wb,
+		output logic [31:0] pc_wb
+);
+		always_ff @(posedge i_clk) begin
+			if (!i_rst_mem) begin
+				pc_sel_wb 		<= 1'b0;
+				rd_wren_wb 		<= 1'b0;
+				inst_vld_wb		<= 1'b0;
+				wb_sel_wb		<= 2'b00;
+				ld_data_wb		<= 32'h0;
+				alu_data_wb		<= 32'h0;
+				immgen_wb		<= 32'h0;
+				instr_wb			<= 32'h0000_0013;
+				pc_four_wb		<= 32'h0;
+				pc_wb				<= 32'h0;
+				end
+			else if (i_enable_mem) begin
+				pc_sel_wb 		<= pc_sel_mem;
+				rd_wren_wb 		<= rd_wren_mem;
+				inst_vld_wb		<= inst_vld_mem;
+				wb_sel_wb		<= wb_sel_mem;
+				ld_data_wb		<= ld_data;
+				alu_data_wb		<= alu_data_mem;
+				immgen_wb		<= immgen_mem;
+				instr_wb			<= instr_mem;
+				pc_four_wb		<= pc_four_mem;
+				pc_wb				<= pc_mem;
+				end
+			end
+endmodule
