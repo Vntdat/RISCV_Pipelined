@@ -1,6 +1,7 @@
 module stageif (
 	input logic i_clk, i_reset, 
 	input logic pc_sel_ex,
+	input logic i_reset_pc, i_enable_pc,
 	input logic [31:0] alu_data_mem,
 	
 	output logic [31:0] instr,
@@ -24,10 +25,12 @@ module stageif (
         if (!i_reset) begin 
 		  pc <= 32'h0;
 		  end
-        else begin
+        else if (i_enable_pc) begin
 		  pc <= pc_next;
 		  end
-		  
+		  else begin
+		  pc <= pc;
+		  end
     end
     // Memory unit (for fetching instructions)
 	imem imem (

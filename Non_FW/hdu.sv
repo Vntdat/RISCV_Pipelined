@@ -1,4 +1,5 @@
 module hdu (
+		input logic 		 i_reset,
 		input logic [31:0] instr_id,
 		input logic [31:0] instr_ex,
 		input logic [31:0] instr_mem,
@@ -9,11 +10,11 @@ module hdu (
 		output logic i_reset_if, i_enable_if,	
 		output logic i_reset_id, i_enable_id,
 		output logic i_reset_ex, i_enable_ex,
-		output logic i_reset_mem, i_enable_mem,	
-		output logic i_reset_wb, i_enable_wb	
+		output logic i_reset_mem, i_enable_mem	
+	
 );
 		logic [4:0] rs1_addr_id, rs2_addr_id, rd_addr_ex;
-		logic data_hazard, is_rs2_addr_id;
+		logic data_hazard, is_rs2_addr_id, control_hazard;
 
 		//xác định thanh ghi rs2 được dùng
 		assign is_rs2_addr_id = ((instr_id[6:0] == 7'b0110011) ||   // R-type
@@ -29,24 +30,27 @@ module hdu (
 		assign control_hazard = pc_sel_ex;
 		//khởi tạo tín hiệu mặc định
 		always_comb begin
-			i_reset_ex		= 1'b1;
-			i_reset_id		= 1'b1;
-			i_reset_if		= 1'b1;
-			i_reset_mem		= 1'b1;
-			i_reset_pc		= 1'b1;
-			i_reset_wb		= 1'b1;
+			i_reset_ex		= i_reset;
+			i_reset_id		= i_reset;
+			i_reset_if		= i_reset;
+			i_reset_mem		= i_reset;
+			i_reset_pc		= i_reset;
 			i_enable_ex		= 1'b1;
 			i_enable_id		= 1'b1;
 			i_enable_if		= 1'b1;
 			i_enable_mem	= 1'b1;
 			i_enable_pc		= 1'b1;
-			i_enable_wb		= 1'b1;
 		//phát hiện data_hazard
 			if (data_hazard) begin
-					i_reset_ex  = 1'b0;
-					i_enable_id = 1'b0;
+					i_reset_id  = 1'b0;
+					i_enable_if = 1'b0;
 					i_enable_pc = 1'b0;
 						end
+			else if (!data_hazard) begin
+					 i_reset_id = i_reset;
+					 i_enable_if = 1'b1;
+					 i_enable_pc = 1'b1;
+					end
 			else if (control_hazard) begin
 					i_enable_pc = 1'b0;
 					i_enable_if = 1'b0;

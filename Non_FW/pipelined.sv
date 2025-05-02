@@ -19,8 +19,8 @@ module pipelined (
     // Debugging signal
     output logic [31:0] o_pc_debug
 );
-	logic i_reset_if, i_reset_id, i_reset_ex, i_reset_mem;
-	logic i_enable_if, i_enable_id, i_enable_ex, i_enable_mem;
+	logic i_reset_pc,i_reset_if, i_reset_id, i_reset_ex, i_reset_mem;
+	logic i_enable_pc, i_enable_if, i_enable_id, i_enable_ex, i_enable_mem;
 	//IF
    logic pc_sel_wb;
 	logic [31:0] alu_data_mem, pc_four, pc, instr;
@@ -52,6 +52,8 @@ module pipelined (
 		stageif stageif(
 		.i_clk		(i_clk),
 		.i_reset		(i_reset),
+		.i_reset_pc	(i_reset_pc),
+		.i_enable_pc (i_enable_pc),
 		.pc_sel_ex	(pc_sel_ex),
 		.alu_data_mem	(alu_data_mem),
 		.instr 			(instr),
@@ -288,7 +290,7 @@ module pipelined (
 	always_ff @(posedge i_clk) begin
 		o_pc_debug <= pc_wb;
 		end
-	always_comb begin
+/*	always_comb begin
 		//if
 		i_reset_if   = 1;
 		i_enable_if  = 1;
@@ -302,6 +304,28 @@ module pipelined (
 		i_enable_mem  = 1;
 		i_reset_mem   = 1;
 		end
-		
+*/
+//HAZARD DETECTION UNIT
+	hdu hdu (
+		.i_reset			(i_reset),
+		.instr_id 		(instr_id),
+		.instr_ex 		(instr_ex),
+		.instr_mem		(instr_mem),
+		.instr_wb		(instr_wb),
+		.rd_wren_ex		(rd_wren_ex),
+		.pc_sel_ex		(pc_sel_ex),
+		.i_reset_pc 	(i_reset_pc),
+		.i_reset_if		(i_reset_if),
+		.i_reset_id		(i_reset_id),
+		.i_reset_ex		(i_reset_ex),
+		.i_reset_mem	(i_reset_mem),
+		.i_enable_pc	(i_enable_pc),
+		.i_enable_if	(i_enable_if),
+		.i_enable_id	(i_enable_id),		
+		.i_enable_ex	(i_enable_ex),		
+		.i_enable_mem	(i_enable_mem)
+	);
+
+			
 		
 endmodule
