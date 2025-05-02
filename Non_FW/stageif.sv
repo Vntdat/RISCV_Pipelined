@@ -2,7 +2,7 @@ module stageif (
 	input logic i_clk, i_reset, 
 	input logic pc_sel_ex,
 	input logic i_reset_pc, i_enable_pc,
-	input logic [31:0] alu_data_mem,
+	input logic [31:0] alu_data,
 	
 	output logic [31:0] instr,
 	output logic [31:0] pc,
@@ -14,7 +14,7 @@ module stageif (
     //mux-PC source
     always_comb begin
         if (pc_sel_ex) begin //PC4-0 and ALU_DATA-1
-            pc_next = alu_data_mem;
+            pc_next = alu_data;
         end
         else begin
             pc_next = pc_four;

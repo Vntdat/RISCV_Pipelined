@@ -46,6 +46,7 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE hdu.sv
 set_global_assignment -name SYSTEMVERILOG_FILE stagewb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE stagemem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE stageif.sv
@@ -62,7 +63,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE sra_32.sv
 set_global_assignment -name SYSTEMVERILOG_FILE sll_32.sv
 set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
 set_global_assignment -name SYSTEMVERILOG_FILE pipelined.sv
-set_global_assignment -name SYSTEMVERILOG_FILE pc_reg.sv
 set_global_assignment -name SYSTEMVERILOG_FILE or_32.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mux4_1_32bit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_32bit.sv
@@ -88,5 +88,16 @@ set_global_assignment -name SYSTEMVERILOG_FILE brc_comparator_signed.sv
 set_global_assignment -name SYSTEMVERILOG_FILE brc.sv
 set_global_assignment -name SYSTEMVERILOG_FILE and_32.sv
 set_global_assignment -name SYSTEMVERILOG_FILE alu.sv
-set_global_assignment -name SYSTEMVERILOG_FILE stageff.sv
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tbench -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME tbench -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tbench
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME pipelined -section_id tbench
+set_global_assignment -name EDA_TEST_BENCH_FILE tbench.sv -section_id tbench
+set_global_assignment -name EDA_TEST_BENCH_FILE tlib.svh -section_id tbench
+set_global_assignment -name EDA_TEST_BENCH_FILE driver.sv -section_id tbench
+set_global_assignment -name EDA_TEST_BENCH_FILE scoreboard.sv -section_id tbench
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
