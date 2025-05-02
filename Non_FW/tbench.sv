@@ -34,6 +34,8 @@ module tbench;
   logic         o_insn_vld;
   logic         o_mispred ;
   logic         o_ctrl    ;
+  logic			 data_hazard_debug; //test
+  logic 			 stall_counter_debug; //test
 
   driver driver (
     .*
