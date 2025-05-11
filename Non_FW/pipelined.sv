@@ -17,8 +17,10 @@ module pipelined (
     output logic [6:0] o_io_hex6,
     output logic [6:0] o_io_hex7,
     // Debugging signal
-    output logic [31:0] o_pc_debug
+    output logic [31:0] o_pc_debug,
+    output logic	o_insn_vld
 );
+	
 	logic i_reset_pc,i_reset_if, i_reset_id, i_reset_ex, i_reset_mem;
 	logic i_enable_pc, i_enable_if, i_enable_id, i_enable_ex, i_enable_mem;
 	//IF
@@ -29,11 +31,22 @@ module pipelined (
 	logic [31:0] instr_id, pc_id, pc_four_id, rs1_data, rs2_data, immgen;
 	logic [3:0] alu_op, lsu_op; 
 	logic [1:0] wb_sel;
+		//UPDATE
+	logic branch;
+	logic [2:0] fun3;
+	
 	//EX
 	logic pc_sel_ex, rd_wren_ex, inst_vld_ex, mem_wren_ex, br_un_ex,br_equal, br_less, opa_sel_ex, opb_sel_ex;
 	logic [31:0] alu_data, rs1_data_ex, rs2_data_ex, immgen_ex, pc_ex, pc_four_ex, instr_ex;
 	logic [3:0] alu_op_ex, lsu_op_ex;
 	logic [1:0] wb_sel_ex;
+		//UPDATE
+	logic branch_ex;
+	logic [2:0] fun3_ex;
+	logic pc_sel_ex_temp;
+	logic control_hazard;
+	logic branch_taken;
+	
 	//MEM
 	logic pc_sel_mem, rd_wren_mem, inst_vld_mem, mem_wren_mem;
 	logic [31:0] rs2_data_mem, immgen_mem , pc_mem, pc_four_mem, instr_mem, ld_data;
@@ -81,8 +94,6 @@ module pipelined (
 		//in
 		.i_clk          (i_clk),
 		.i_reset        (i_reset),
-		.br_less  	 	 (br_less),
-		.br_equal   	(br_equal),
 		.rd_wren_wb  	  (rd_wren_wb),
 		.instr_id 			(instr_id),
 		.pc_id 				(pc_id),
@@ -102,7 +113,9 @@ module pipelined (
 		  .lsu_op      (lsu_op),
         .rs1_data     (rs1_data),
         .rs2_data     (rs2_data),
-		  .immgen		 (immgen)
+		  .immgen		 (immgen),
+		  .branch		(branch),
+		  .fun3			(fun3)
 		);
 
 		// ID_FF
@@ -127,8 +140,11 @@ module pipelined (
 		  .instr_id		(instr_id),
 		  .pc_id			(pc_id),
 		  .pc_four_id	(pc_four_id),
+		  //update
+		  .branch		(branch),
+		  .fun3			(fun3),
 		  //out
-		  .pc_sel_ex     (pc_sel_ex),
+		  .pc_sel_ex_temp     (pc_sel_ex_temp),
         .rd_wren_ex    (rd_wren_ex),
 		  .inst_vld_ex		(inst_vld_ex),
         .br_un_ex      (br_un_ex),
@@ -143,7 +159,11 @@ module pipelined (
 		  .immgen_ex		(immgen_ex),
 		  .instr_ex		(instr_ex),
 		  .pc_ex			(pc_ex),
-		  .pc_four_ex	(pc_four_ex)
+		  .pc_four_ex	(pc_four_ex),
+		  //update
+		  .branch_ex	(branch_ex),
+		  .fun3_ex		(fun3_ex)
+		  
 		);
 		
 /////////////////////////////////////////////////////////////////////
@@ -159,10 +179,16 @@ module pipelined (
 		.rs2_data_ex	(rs2_data_ex),
 		.immgen_ex		(immgen_ex),
 		.alu_op_ex     (alu_op_ex),
+		.branch_ex		(branch_ex),		
+		.fun3_ex			(fun3_ex), 
+		.pc_sel_ex_temp (pc_sel_ex_temp), 
+		.control_hazard (control_hazard),
 		//out
 		.br_less  	 	 (br_less),
 		.br_equal   	(br_equal),
-		.alu_data		(alu_data)
+		.alu_data		(alu_data),
+		.branch_taken	(branch_taken),
+		.pc_sel_ex		(pc_sel_ex)
 		);
  
 	 //EX_FF
@@ -289,7 +315,9 @@ module pipelined (
 		);
 	always_ff @(posedge i_clk) begin
 		o_pc_debug <= pc_wb;
+		
 		end
+	assign o_insn_vld = !inst_vld_wb;
 
 //HAZARD DETECTION UNIT
 	hdu hdu (
@@ -302,7 +330,6 @@ module pipelined (
 		.rd_wren_ex		(rd_wren_ex),
 		.rd_wren_mem	(rd_wren_mem),
 		.rd_wren_wb		(rd_wren_wb),
-		.pc_sel_ex		(pc_sel_ex),
 		.i_reset_pc 	(i_reset_pc),
 		.i_reset_if		(i_reset_if),
 		.i_reset_id		(i_reset_id),
@@ -312,9 +339,13 @@ module pipelined (
 		.i_enable_if	(i_enable_if),
 		.i_enable_id	(i_enable_id),		
 		.i_enable_ex	(i_enable_ex),		
-		.i_enable_mem	(i_enable_mem)
+		.i_enable_mem	(i_enable_mem),
+		.control_hazard (control_hazard),
+		.branch_taken	(branch_taken),
+		.pc_sel_ex_temp (pc_sel_ex_temp)
 	);
 
 			
 		
 endmodule
+

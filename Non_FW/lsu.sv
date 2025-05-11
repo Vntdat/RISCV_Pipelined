@@ -23,7 +23,7 @@ module lsu (
 );
 
     // Memory and I/O Registers
-    logic [31:0] data_memory [0:31];  // 2KB RAM (512 words)
+    logic [31:0] data_memory [0:16383];  // 2KB RAM (512 words)
     logic [31:0] lcd_reg;              // LCD Control Register
     logic [31:0] ledr_reg;             // Red LEDs
     logic [31:0] ledg_reg;             // Green LEDs
@@ -43,7 +43,7 @@ module lsu (
 
     // Address Decoding Logic
     always_comb begin
-        is_ram_access    = (i_addr[31:15] == 17'b0000_0000_0000_0000_0);     // 0x0000_0000-0x0000_7FFF
+        is_ram_access    = (i_addr[31:16] == 16'b0000_0000_0000_0000);     // 0x0000_0000-0x0000_FFFF
         is_ledr_access   = (i_addr[31:12] == 20'h10000);     // 0x1000_0000-0x1000_0FFF
         is_ledg_access   = (i_addr[31:12] == 20'h10001);     // 0x1000_1000-0x1000_1FFF
         is_hex0_3_access = (i_addr[31:12] == 20'h10002);     // 0x1000_2000-0x1000_2FFF
@@ -68,41 +68,41 @@ module lsu (
 								 // lb
 								 4'b0000: begin
 									  case (i_addr[1:0])
-											2'b00: o_rdata = {{24{data_memory[i_addr[6:2]][7]}},  data_memory[i_addr[6:2]][7:0]};
-											2'b01: o_rdata = {{24{data_memory[i_addr[6:2]][15]}}, data_memory[i_addr[6:2]][15:8]};
-											2'b10: o_rdata = {{24{data_memory[i_addr[6:2]][23]}}, data_memory[i_addr[6:2]][23:16]};
-											2'b11: o_rdata = {{24{data_memory[i_addr[6:2]][31]}}, data_memory[i_addr[6:2]][31:24]};
+											2'b00: o_rdata = {{24{data_memory[i_addr[15:2]][7]}},  data_memory[i_addr[15:2]][7:0]};
+											2'b01: o_rdata = {{24{data_memory[i_addr[15:2]][15]}}, data_memory[i_addr[15:2]][15:8]};
+											2'b10: o_rdata = {{24{data_memory[i_addr[15:2]][23]}}, data_memory[i_addr[15:2]][23:16]};
+											2'b11: o_rdata = {{24{data_memory[i_addr[15:2]][31]}}, data_memory[i_addr[15:2]][31:24]};
 									  endcase
 								 end
 
 								 // lbu
 								 4'b0001: begin
 									  case (i_addr[1:0])
-											2'b00: o_rdata = {24'h0, data_memory[i_addr[6:2]][7:0]};
-											2'b01: o_rdata = {24'h0, data_memory[i_addr[6:2]][15:8]};
-											2'b10: o_rdata = {24'h0, data_memory[i_addr[6:2]][23:16]};
-											2'b11: o_rdata = {24'h0, data_memory[i_addr[6:2]][31:24]};
+											2'b00: o_rdata = {24'h0, data_memory[i_addr[15:2]][7:0]};
+											2'b01: o_rdata = {24'h0, data_memory[i_addr[15:2]][15:8]};
+											2'b10: o_rdata = {24'h0, data_memory[i_addr[15:2]][23:16]};
+											2'b11: o_rdata = {24'h0, data_memory[i_addr[15:2]][31:24]};
 									  endcase
 								 end
 
 								 // lh
 								 4'b0010: begin
 									  if (i_addr[1] == 1'b0)
-											o_rdata = {{16{data_memory[i_addr[6:2]][15]}}, data_memory[i_addr[6:2]][15:0]};
+											o_rdata = {{16{data_memory[i_addr[15:2]][15]}}, data_memory[i_addr[15:2]][15:0]};
 									  else
-											o_rdata = {{16{data_memory[i_addr[6:2]][31]}}, data_memory[i_addr[6:2]][31:16]};
+											o_rdata = {{16{data_memory[i_addr[15:2]][31]}}, data_memory[i_addr[15:2]][31:16]};
 								 end
 
 								 // lhu
 								 4'b0011: begin
 									  if (i_addr[1] == 1'b0)
-											o_rdata = {16'h0, data_memory[i_addr[6:2]][15:0]};
+											o_rdata = {16'h0, data_memory[i_addr[15:2]][15:0]};
 									  else
-											o_rdata = {16'h0, data_memory[i_addr[6:2]][31:16]};
+											o_rdata = {16'h0, data_memory[i_addr[15:2]][31:16]};
 								 end
 
 								 // lw
-								 4'b0100: o_rdata = data_memory[i_addr[6:2]];
+								 4'b0100: o_rdata = data_memory[i_addr[15:2]];
 								 default: o_rdata = 32'h0;
 							endcase
                 end
@@ -142,22 +142,22 @@ module lsu (
                         // sb - store byte
                         4'b1000: 
 case (i_addr[1:0]) 
-2'b00: data_memory[i_addr[6:2]][7:0] <= i_wdata[7:0];
-2'b01: data_memory[i_addr[6:2]][15:8] <= i_wdata[7:0];
-2'b10: data_memory[i_addr[6:2]][23:16] <= i_wdata[7:0];
-2'b11: data_memory[i_addr[6:2]][31:24] <= i_wdata[7:0];
+2'b00: data_memory[i_addr[15:2]][7:0] <= i_wdata[7:0];
+2'b01: data_memory[i_addr[15:2]][15:8] <= i_wdata[7:0];
+2'b10: data_memory[i_addr[15:2]][23:16] <= i_wdata[7:0];
+2'b11: data_memory[i_addr[15:2]][31:24] <= i_wdata[7:0];
 endcase
                         // sh - store half-word
                         4'b1001:
 case (i_addr[1:0])
-                                2'b00: data_memory[i_addr[6:2]][15:0] <= i_wdata[15:0];
+                                2'b00: data_memory[i_addr[15:2]][15:0] <= i_wdata[15:0];
                             
-                                2'b10: data_memory[i_addr[6:2]][31:16] <= i_wdata[15:0];
+                                2'b10: data_memory[i_addr[15:2]][31:16] <= i_wdata[15:0];
                           default: ;
 endcase
                       
                         // sw - store word
-                        4'b1010: data_memory[i_addr[6:2]] <= i_wdata;
+                        4'b1010: data_memory[i_addr[15:2]] <= i_wdata;
                         default: ; // Ignore
                     endcase
                 end

@@ -1,14 +1,18 @@
 module stageid(
 	input logic i_clk, i_reset,
-	input logic br_less, br_equal, rd_wren_wb,
+	input logic rd_wren_wb,
 	input logic [31:0] instr_id, pc_id, pc_four_id, instr_wb, wb_data,
 	
-	output logic pc_sel, rd_wren, inst_vld, br_un, opa_sel, opb_sel, mem_wren,
+	output logic pc_sel, rd_wren, inst_vld, opa_sel, opb_sel, mem_wren,
 	output logic [3:0] alu_op, lsu_op,
 	output logic [1:0] wb_sel,
-	output logic [31:0] rs1_data, rs2_data, immgen
+	output logic [31:0] rs1_data, rs2_data, immgen,
+	//update
+	output logic branch,
+	output logic [2:0] fun3,
+	output logic br_un
 );
-	
+
     //regfile
     regfile regfile (
         .i_clk          (i_clk),
@@ -29,8 +33,8 @@ module stageid(
     // Control unit
     controlunit controlunit (
         .i_instr    (instr_id),
-        .br_less    (br_less),
-        .br_equal   (br_equal),
+        //.br_less    (br_less),
+        //.br_equal   (br_equal),
         .pc_sel     (pc_sel),
         .rd_wren    (rd_wren),
 		  .inst_vld		(inst_vld),
@@ -40,6 +44,10 @@ module stageid(
         .mem_wren   (mem_wren),
         .alu_op     (alu_op),
         .wb_sel     (wb_sel),
-		  .lsu_op      (lsu_op)
+		  .lsu_op      (lsu_op),
+		  .branch		(branch), //update
+		  .fun3			(fun3)	 //update
     );
+	 
+
 endmodule

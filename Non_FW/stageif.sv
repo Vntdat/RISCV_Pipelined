@@ -38,5 +38,5 @@ module stageif (
 	.o_inst (instr)
 	);
 
-	endmodule
-	
+endmodule
+

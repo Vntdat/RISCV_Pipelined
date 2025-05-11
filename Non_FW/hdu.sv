@@ -5,16 +5,18 @@ module hdu (
 		input logic [31:0] instr_ex,
 		input logic [31:0] instr_mem,
 		input logic [31:0] instr_wb,
-		input logic rd_wren_ex, rd_wren_mem, rd_wren_wb, pc_sel_ex,
+		input logic rd_wren_ex, rd_wren_mem, rd_wren_wb, pc_sel_ex_temp,
+		input logic branch_taken, //update
 		
 		output logic i_reset_pc, i_enable_pc,
 		output logic i_reset_if, i_enable_if,	
 		output logic i_reset_id, i_enable_id,
 		output logic i_reset_ex, i_enable_ex,
-		output logic i_reset_mem, i_enable_mem
+		output logic i_reset_mem, i_enable_mem,
+		output logic control_hazard  //update
 );
 		logic [4:0] rs1_addr_id, rs2_addr_id, rd_addr_ex, rd_addr_mem, rd_addr_wb;
-		logic data_hazard, is_rs2_addr_id, control_hazard;
+		logic data_hazard, is_rs2_addr_id;
 		//xác định thanh ghi rs2 được dùng
 		assign is_rs2_addr_id = ((instr_id[6:0] == 7'b0110011) ||   // R-type
 										 (instr_id[6:0] == 7'b0100011) ||   // S-type
@@ -33,7 +35,7 @@ module hdu (
 			 ((rd_wren_wb)  && (rd_addr_wb  != 5'h0) && ((rd_addr_wb  == rs1_addr_id) || ((rd_addr_wb  == rs2_addr_id) && is_rs2_addr_id)))
 		);
 	
-		assign control_hazard = pc_sel_ex;
+		assign control_hazard = branch_taken || pc_sel_ex_temp;
 		
 
 		//khởi tạo tín hiệu mặc định

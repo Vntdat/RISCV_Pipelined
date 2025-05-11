@@ -2,9 +2,19 @@ module stageex (
 		input logic br_un_ex, opa_sel_ex, opb_sel_ex,
 		input logic [31:0] pc_ex, rs1_data_ex, rs2_data_ex, immgen_ex,
 		input logic [3:0] alu_op_ex,
-		
+
 		output logic br_less, br_equal,
-		output logic [31:0] alu_data
+		output logic [31:0] alu_data,
+		
+		//UPDATE
+		input logic branch_ex,		
+		input logic [2:0] fun3_ex, 
+		input logic pc_sel_ex_temp, 
+		input logic control_hazard,
+		
+		output logic branch_taken,
+		output logic pc_sel_ex
+		
 );
 		logic [31:0] operand_a, operand_b;
    // Branch comparison logic
@@ -37,4 +47,20 @@ module stageex (
         .s (opb_sel_ex),
         .y (operand_b)
     );
+	 
+	 branch_decision branch_decision (
+		.fun3 			(fun3_ex),           // Từ lệnh qua ID/EX register
+		.branch			(branch_ex),               // Từ Control Unit qua ID/EX register
+		.br_equal		(br_equal), 
+		.br_less			(br_less),    // Từ BRC
+		.branch_taken  (branch_taken)
+	);
+	
+	mux2_1 pc_sel_mux (
+		.a (pc_sel_ex_temp),
+		.b (1'b1),
+		.s (control_hazard),
+		.y (pc_sel_ex)
+	);
+	
 endmodule

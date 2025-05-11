@@ -13,7 +13,7 @@ module memory (
 
     // Đọc file dữ liệu/mã lệnh
     initial begin
-        $readmemh("/home/cpa/ca111/sc-test/02_test/isa.mem", mem);
+        $readmemh("/home/cpa/ca111/pl-test/02_test/isa.mem", mem);
     end
 
     // Đọc không đồng bộ

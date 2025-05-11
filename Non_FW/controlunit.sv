@@ -1,41 +1,47 @@
 module controlunit (
-		//tin hieu ngo vao
-		input logic [31:0] i_instr,
-		input logic br_less, br_equal,
-		
-		//tin hieu ngo ra
-		output logic pc_sel, rd_wren, br_un, opa_sel, opb_sel, mem_wren, inst_vld,
-		output logic [3:0] alu_op,
-		output logic [1:0] wb_sel,
-		output logic [3:0] lsu_op
+    // Tin hieu ngo vao
+    input logic [31:0] i_instr,
+    //input logic br_less, br_equal, // Không sử dụng trực tiếp ở đây nữa
+    
+    // Tin hieu ngo ra
+    output logic pc_sel, rd_wren, br_un, opa_sel, opb_sel, mem_wren, inst_vld,
+    output logic [3:0] alu_op,
+    output logic [1:0] wb_sel,
+    output logic [3:0] lsu_op,
+    output logic branch,  // Update
+    output logic [2:0] fun3  // Update
 );
-		// khai bao cac tin hieu can
-		logic [4:0] opcode;
-		logic [2:0] fun3;
-		logic fun7;
-		logic br_unte;
-		// gan cac tin hieu dua tren ma may
-		always_comb begin 
-				opcode = i_instr [6:2];
-				fun3   = i_instr [14:12];
-				fun7   = i_instr [30];
-				br_unte = i_instr [13];
-		end
-		// gan cac gia tri ban dau cho cac ngo ra
-		always_comb begin
-				pc_sel    = 1'b0;    // PC = PC + 4
-				br_un     = 1'b0;    // so sanh co dau
-				rd_wren   = 1'b0;    // read
-				opa_sel   = 1'b0;    // alu nhan rs1
-				opb_sel   = 1'b1;    // alu imm
-				mem_wren  = 1'b0;    // read alu (load)
-				alu_op    = 4'b0000; // add
-				wb_sel    = 2'b00;   // alu_data
-				lsu_op = 4'b0100;		//lW
-				inst_vld = 1'b1;
-		// dua tren opcode de phan biec cac loai lenh R, I, S, B, U, J
-		
-		case (opcode)
+    // Khai bao cac tin hieu can
+    logic [4:0] opcode;
+    logic fun7;
+    logic br_unte;
+
+    // Gan cac tin hieu dua tren ma may
+    always_comb begin 
+        opcode = i_instr[6:2];
+        fun3   = i_instr[14:12]; // Gán trực tiếp cho fun3 (đầu ra)
+        fun7   = i_instr[30];
+        br_unte = i_instr[13];
+    end
+
+    // Gan cac gia tri ban dau cho cac ngo ra
+    always_comb begin
+        // Gán giá trị mặc định cho tất cả tín hiệu đầu ra
+        pc_sel    = 1'b0;    // PC = PC + 4 (quyết định ở EX)
+        br_un     = 1'b0;    // So sanh co dau mac dinh
+        rd_wren   = 1'b0;    // Read
+        opa_sel   = 1'b0;    // ALU nhan rs1
+        opb_sel   = 1'b1;    // ALU nhan imm
+        mem_wren  = 1'b0;    // Read ALU (load)
+        alu_op    = 4'b0000; // Add
+        wb_sel    = 2'b00;   // ALU_data
+        lsu_op    = 4'b0100; // LW
+        inst_vld  = 1'b1;
+        branch    = 1'b0;    // Mặc định không phải lệnh nhánh
+        // fun3 đã được gán trực tiếp ở trên, không cần gán lại ở đây
+
+        // Xử lý dựa trên opcode
+        case (opcode)
 				// R_Format
 				5'b01100: begin
 					pc_sel  = 1'b0;
@@ -89,31 +95,21 @@ module controlunit (
 											3'b111: alu_op = 4'b0110; // lenh ANDI
 									endcase
 							end
-				//B-Format len re nhanh
-				5'b11000: begin
-    opa_sel   = 1'b1;
-    opb_sel   = 1'b1; // imm
-    rd_wren   = 1'b0;
-    mem_wren  = 1'b0;
-	 inst_vld = 1'b0;
-    // Xác định br_un phụ thuộc vào fun3
-    case (br_unte)
-        1'b0: br_un = 1'b1;
-		  1'b1: br_un = 1'b0;
-    endcase
-
-    // Gán pc_sel tách biệt
-    case (fun3)
-        3'b000: pc_sel = br_equal;        // BEQ so sánh bằng có dấu
-        3'b001: pc_sel = !br_equal;       // BNE so sánh không bằng có dấu
-        3'b100: pc_sel = br_less;         // BLT nhảy nếu rs1 < rs2 có dấu
-        3'b101: pc_sel = !br_less;        // BGE nhảy nếu rs >= rs2 có dấu
-        3'b110: pc_sel = br_less;         // BLTU nhảy nếu rs1 < rs2 ko dấu
-        3'b111: pc_sel = !br_less;        // BGEU nhảy nếu rs1 >= rs2 ko dấu
-        default: begin
-		  end
-    endcase
-end
+            // B-Format (khong quyet dinh pc_sel o day)
+            5'b11000: begin
+                opa_sel   = 1'b1;
+                opb_sel   = 1'b1; // imm
+                rd_wren   = 1'b0;
+                mem_wren  = 1'b0;
+                inst_vld  = 1'b0;
+                branch    = 1'b1;  // Là lệnh nhánh
+                // Xac dinh br_un
+                case (br_unte)
+                    1'b0: br_un = 1'b1; // Unsigned
+                    1'b1: br_un = 1'b0; // Signed
+                endcase
+                // Khong gan pc_sel tai day, de EX xu ly
+            end
 				// S_Format lenh Store ghi du lieu vao LSU
 				5'b01000: begin
 					pc_sel   = 1'b0;
@@ -192,5 +188,6 @@ end
 				default: begin
 				end
 			endcase
-	end
-endmodule      			
+		end
+endmodule
+

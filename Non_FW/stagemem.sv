@@ -27,7 +27,8 @@ module stagemem (
         .o_io_hex6     (o_io_hex6_mem),
         .o_io_hex7     (o_io_hex7_mem),
         .o_io_lcd      (o_io_lcd_mem),
-        .i_io_sw       (i_io_sw_wb_mem)
+        .i_io_sw       (i_io_sw_wb)
 		  
     );
 endmodule
+
