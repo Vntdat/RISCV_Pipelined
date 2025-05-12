@@ -32,7 +32,7 @@ module id_ff (
 			if (!i_reset_id) begin
 				pc_sel_ex_temp	<= 1'b0;
 				rd_wren_ex 		<= 1'b0;
-				inst_vld_ex 	<= 1'b0;
+				inst_vld_ex 	<= 1'b1;
 				br_un_ex			<= 1'b0;
 				opa_sel_ex 		<= 1'b0;
 				opb_sel_ex 		<= 1'b0;

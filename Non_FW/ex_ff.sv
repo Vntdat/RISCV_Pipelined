@@ -24,7 +24,7 @@ module ex_ff (
 			if (!i_reset_ex) begin
 				pc_sel_mem		<= 1'b0;
 				rd_wren_mem 	<= 1'b0;
-				inst_vld_mem 	<= 1'b0;
+				inst_vld_mem 	<= 1'b1;
 				mem_wren_mem	<= 1'b0;
 				wb_sel_mem		<= 2'b00;
 				alu_data_mem	<= 32'h0;

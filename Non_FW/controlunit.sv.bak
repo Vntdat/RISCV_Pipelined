@@ -39,7 +39,7 @@ module controlunit (
         inst_vld  = 1'b1;
         branch    = 1'b0;    // Mặc định không phải lệnh nhánh
         // fun3 đã được gán trực tiếp ở trên, không cần gán lại ở đây
-			inst_vld = (i_instr == 32'h00000013) ? 1'b0 : 1'b1;
+
         // Xử lý dựa trên opcode
         case (opcode)
 				// R_Format
