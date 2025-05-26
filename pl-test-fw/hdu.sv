@@ -50,7 +50,8 @@ module hdu (
 	assign load_use_hazard = (rd_wren_ex && (rd_addr_ex != 5'd0) && 
                              !mem_wren_ex && (opcode_ex ==5'b0000) && ((rd_addr_ex == rs1_addr_id) || (rd_addr_ex == rs2_addr_id && is_rs2_addr_id))) ||
 									  (rd_wren_mem && (rd_addr_mem != 5'd0) && 
-                             !mem_wren_mem && (opcode_mem ==5'b0000) && ((rd_addr_mem == rs1_addr_id) || (rd_addr_mem == rs2_addr_id && is_rs2_addr_id)));
+                             !mem_wren_mem && (opcode_mem ==5'b0000) && ((rd_addr_mem == rs1_addr_id) || (rd_addr_mem == rs2_addr_id && is_rs2_addr_id)))
+									  || (opcode_ex == 5'b01101) || (opcode_mem == 5'b01101);
 	/* Forwarding logic: 
 	00: no forward
 	01: forward from WB
